@@ -3,6 +3,7 @@
 <head>
   <title>Patient Registration Form</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
   <script src="script.js"></script>
 </head>
 <body>
@@ -16,7 +17,8 @@
     <input type="submit" value="Register">
   </form>
 
-  <div id="message"></div>
+  <div style="color:red" id="message"></div>
+  
 
   <script>$(document).ready(function() {
     $('#registrationForm').submit(function(event) {
@@ -33,6 +35,8 @@
         success: function(response) {
           if (response === 'exists') {
             $('#message').html('Patient with the provided mobile number or email ID already exists.');
+            $('#message1').css('color', 'red');
+
           } else {
             // Proceed with registration and store data into the database
             $.ajax({
@@ -41,6 +45,7 @@
               data: { mobile: mobile, email: email },
               success: function() {
                 $('#message').html('Patient registered successfully!');
+                $('#message').css('color', 'green');
                 $('#registrationForm')[0].reset();
               }
             });
