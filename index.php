@@ -17,7 +17,7 @@
     <input type="submit" value="Register">
   </form>
 
-  <div style="color:red" id="message"></div>
+  <div  id="message"></div>
   
 
   <script>$(document).ready(function() {
@@ -35,7 +35,7 @@
         success: function(response) {
           if (response === 'exists') {
             $('#message').html('Patient with the provided mobile number or email ID already exists.');
-            $('#message1').css('color', 'red');
+            $('#message').css('color', 'red');
 
           } else {
             // Proceed with registration and store data into the database
