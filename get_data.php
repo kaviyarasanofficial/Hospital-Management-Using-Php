@@ -12,8 +12,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
-
 // Retrieve all patients data from the database
 $result = $conn->query("SELECT * FROM patients");
 
@@ -23,7 +21,7 @@ if ($result->num_rows > 0) {
     echo "<td class='mobile'>" . $row["mobile"] . "</td>";
     echo "<td class='email'>" . $row["email"] . "</td>";
     echo "<td>
-            <button class='edit-btn' data-id='" . $row["id"] . "'>Edit</button>
+            <button class='edit-btn' data-mobile='" . $row["mobile"] . "'>Edit</button>
             <button class='delete-btn' data-mobile='" . $row["mobile"] . "'>Delete</button>
           </td>";
     echo "</tr>";
@@ -32,5 +30,4 @@ if ($result->num_rows > 0) {
   echo "<tr><td colspan='3'>No patients registered</td></tr>";
 }
 
-$conn->close();
 ?>
